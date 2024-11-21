@@ -1,5 +1,6 @@
 package com.basic.auth.impl.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,5 +21,14 @@ public class SecurityController {
 	@GetMapping("/details")
 	public List<User> userDetails() {
 		return this.userService.getUsers();
+	}
+	
+//	here i use Principal so its a interface it hepls to get current object
+//	using we find which user is currently login
+	
+	@GetMapping("/user-name")
+	public String getLoggedUser(Principal principal)
+	{
+		return principal.getName();
 	}
 }
